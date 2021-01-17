@@ -86,7 +86,6 @@ describe('GithubUrlReader', () => {
     };
 
     beforeEach(() => {
-      // For github.com host
       worker.use(
         rest.get(
           'https://github.com/backstage/mock/archive/main.tar.gz',
@@ -97,9 +96,6 @@ describe('GithubUrlReader', () => {
               ctx.body(repoBuffer),
             ),
         ),
-      );
-
-      worker.use(
         rest.get('https://api.github.com/repos/backstage/mock', (_, res, ctx) =>
           res(
             ctx.status(200),
@@ -107,9 +103,6 @@ describe('GithubUrlReader', () => {
             ctx.json(reposGithubApiResponse),
           ),
         ),
-      );
-
-      worker.use(
         rest.get(
           'https://api.github.com/repos/backstage/mock/branches/main',
           (_, res, ctx) =>
@@ -119,17 +112,10 @@ describe('GithubUrlReader', () => {
               ctx.json(branchesApiResponse),
             ),
         ),
-      );
-
-      worker.use(
         rest.get(
           'https://api.github.com/repos/backstage/mock/branches/branchDoesNotExist',
           (_, res, ctx) => res(ctx.status(404)),
         ),
-      );
-
-      // For a GHE host
-      worker.use(
         rest.get(
           'https://ghe.github.com/backstage/mock/archive/main.tar.gz',
           (_, res, ctx) =>
@@ -139,9 +125,6 @@ describe('GithubUrlReader', () => {
               ctx.body(repoBuffer),
             ),
         ),
-      );
-
-      worker.use(
         rest.get(
           'https://ghe.github.com/api/v3/repos/backstage/mock',
           (_, res, ctx) =>
@@ -151,9 +134,6 @@ describe('GithubUrlReader', () => {
               ctx.json(reposGheApiResponse),
             ),
         ),
-      );
-
-      worker.use(
         rest.get(
           'https://ghe.github.com/api/v3/repos/backstage/mock/branches/main',
           (_, res, ctx) =>
