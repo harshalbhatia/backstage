@@ -1,5 +1,14 @@
 # @backstage/techdocs-common
 
+## 0.3.4
+
+### Patch Changes
+
+- a594a7257: @backstage/techdocs-common can now be imported in an environment without @backstage/plugin-techdocs-backend being installed.
+- Updated dependencies [0b135e7e0]
+  - @backstage/backend-common@0.4.4
+  - @backstage/integration@0.2.1
+
 ## 0.3.3
 
 ### Patch Changes
